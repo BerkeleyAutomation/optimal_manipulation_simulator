@@ -1,0 +1,64 @@
+<launch>
+
+  <!-- By default, we do not start a database (it can be large) -->
+  <arg name="db" default="false" />
+  <!-- Allow user to specify database location -->
+  <arg name="db_path" default="$(find yumi_moveit_config)/default_warehouse_mongo_db" />
+
+  <!-- Planning pipeline, default to stomp -->
+  <!-- <arg name="pipeline" default="stomp_moveit"/> -->
+  <arg name="pipeline" default="ompl"/>
+  <!-- <arg name="pipeline" default="chomp"/> -->
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+  <include file="$(find yumi_moveit_config)/launch/planning_context.launch">
+    <arg name="load_robot_description" value="true"/>
+  </include>
+
+  <!-- If needed, broadcast static tf for robot root -->
+
+  <!-- Given the published joint states, publish tf for the robot links -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+  <!-- Run the main MoveIt executable without trajectory execution (we do not have controllers configured by default) -->
+  <include file="$(find yumi_moveit_config)/launch/move_group.launch">
+    <arg name="pipeline" value="$(arg pipeline)"/>
+    <arg name="allow_trajectory_execution" value="true"/>
+    <arg name="fake_execution" value="true"/>
+    <arg name="info" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <!-- Run Rviz and load the default config to see the state of the move_group node -->
+  <include file="$(find yumi_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+
+
+
+  <!-- Gazebo -->
+<!--   <arg name="paused" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="hardware_interface" default="EffortJointInterface"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gui)"/>
+  </include>
+  <param name="robot_description" command="$(find xacro)/xacro.py '$(find yumi_description)/urdf/yumi.urdf.xacro' prefix:=$(arg hardware_interface)" />
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model yumi" />
+ -->
+
+
+  <!-- If database loading was enabled, start mongodb as well -->
+  <include file="$(find yumi_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
+    <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
+  </include>
+  <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /joint_states sensor_msgs/JointState '{name: ['yumi_joint_1_l', 'yumi_joint_2_l', 'yumi_joint_7_l', 'yumi_joint_3_l', 'yumi_joint_4_l', 'yumi_joint_5_l', 'yumi_joint_6_l', 'gripper_l_joint', 'yumi_joint_1_r', 'yumi_joint_2_r', 'yumi_joint_7_r', 'yumi_joint_3_r', 'yumi_joint_4_r', 'yumi_joint_5_r', 'yumi_joint_6_r', 'gripper_r_joint'], position: [0.0,-2.2689280275926285, 2.356194490192345,0.5235987755982988,0.0,0.6981317007977318,0.0,0.0,0.0,-2.2689280275926285,-2.356194490192345,0.5235987755982988,0.0,0.6981317007977318,0.0,0.0]}'"/>
+</launch>

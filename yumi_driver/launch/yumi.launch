@@ -1,0 +1,15 @@
+<launch>
+
+  <include file="$(find yumi_moveit_config)/launch/real_demo.launch"/>
+
+<!--   <node name="yumi_controller" pkg="yumi_driver" type="yumi_controller.py" respawn="false" output="screen">
+  </node>
+
+  <node name="YuMiListener" pkg="yumi_driver" type="YuMiListener.py" respawn = "false" output="screen">
+  </node> -->
+  
+  <node name="test_dexnet" pkg="yumi_driver" type="test_dexnet.py" respawn="false" output="screen">
+  </node>
+  
+  
+</launch>

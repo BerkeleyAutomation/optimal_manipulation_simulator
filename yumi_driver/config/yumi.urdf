@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<robot name="yumi">
+	<material name="grey">
+        <color rgba="1 0 0 1"/>
+    </material>
+
+	<link name="base_link">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Base.STL" scale = "1 1 1"/>
+			</geometry>
+			<material name="grey"/>
+		</visual>
+	</link>
+	
+	<joint name="Base_to_LinkL1" type="revolute">
+		<parent link="base_link" />
+		<child link="LinkL1" />
+		<axis xyz=".08138 .03421 0.046985" />
+		<origin xyz=".047607 .07 .411486"/>
+		<limit effort="1000.0" lower="-2.941" upper="2.941" velocity="1" />
+	</joint>
+
+	<link name="LinkL1">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link1.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.047607 -.07 -.411486" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL1_to_LinkL2" type="revolute">
+		<parent link="LinkL1" />
+		<child link="LinkL2" />
+		<axis xyz=".0106485 .070704 -.069911" />
+		<origin xyz=".067096 .03378 .088"/>
+		<limit effort="1000.0" lower="-2.505" upper=".759" velocity="1" />
+	</joint>
+
+	<link name="LinkL2">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link2.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.114703 -.10378 -.499486" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL2_to_LinkL3" type="revolute">
+		<parent link="LinkL2" />
+		<child link="LinkL3" />
+		<axis xyz=".08138 .034202 .046985" />
+		<origin xyz=".15084 .057821 .037825"/>
+		<limit effort="1000.0" lower="-2.941" upper="2.941" velocity="1" />
+	</joint>
+
+	<link name="LinkL3">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link3.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.265542 -.161601 -.537311" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL3_to_LinkL4" type="revolute">
+		<parent link="LinkL3" />
+		<child link="LinkL4" />
+		<axis xyz=".010648 .070704 -.069911" />
+		<origin xyz=".094013 -.016077 .042973"/>
+		<limit effort="1000.0" lower="-2.1554816" upper="1.39626" velocity="1" />
+	</joint>
+
+	<link name="LinkL4">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link4.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.359555 -.145524 -.580285" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL4_to_LinkL5" type="revolute">
+		<parent link="LinkL4" />
+		<child link="LinkL5" />
+		<axis xyz="0.5713100426 -0.6189656251 -0.5389678935" />
+		<origin xyz=".116057 -.050354 -.078164"/>
+		<limit effort="1000.0" lower="-5.06145" upper="5.06145" velocity="1" />
+	</joint>
+
+	<link name="LinkL5">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link5.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.475612 -.09517 -.502121" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL5_to_LinkL6" type="revolute">
+		<parent link="LinkL5" />
+		<child link="LinkL6" />
+		<axis xyz=".010648 .070704 -.069911" />
+		<origin xyz=".051246 -.076389 -.090619"/>
+		<limit effort="1000.0" lower="-1.53589" upper="2.40855" velocity="1" />
+	</joint>
+
+	<link name="LinkL6">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link6.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.526858 -.018781 -.411502" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkL6_to_LinkL7" type="revolute">
+		<parent link="LinkL6" />
+		<child link="LinkL7" />
+		<axis xyz="0.5713100426 -0.6189656251 -0.5389678935" />
+		<origin xyz=".040964 -.0235125 .00363"/>
+		<limit effort="1000.0" lower="-5.06145" upper="5.06145" velocity="1" />
+	</joint>
+
+	<link name="LinkL7">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/Link7.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.567822 .004732 -.415132" rpy="0 0 0"/>
+		</visual>
+	</link>
+<!-- 
+	<joint name="LinkL7_to_Gripper_Base" type="fixed">
+		<parent link="LinkL7" />
+		<child link="Gripper_BaseL" />
+		<origin rpy="-0.39786311 0.4891167 -0.9140329" xyz="0 0 0" />
+	</joint>
+
+	<link name="Gripper_BaseL">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/left/HandBase.STL" scale = "1 1 1"/>
+			</geometry>
+			
+			<origin xyz="0 0 0" rpy="0 1.5707 0" /> 
+			
+		</visual>
+	</link> -->
+<!-- <origin xyz="0 0 0" rpy="-0.39786311 0.4891167 -0.9140329" /> -->
+			<!-- <origin xyz="0 0 0" rpy="0.5236 -0.349 0.8517" />  -->
+			<!-- <origin xyz="0 0 0" rpy="-1.173 0.4891 -0.9140" /> -->
+			<!-- <origin xyz="0 0 0" rpy="-0.6293 0.9507 -0.9140" /> -->
+
+			<!-- <origin xyz="0 0 0" rpy="-2.46091 -0.261799 0.733038"/> -->
+			<!-- <origin xyz="0 0 0" rpy="-2.530727 -0.785398 -0.10472" /> -->
+			
+			<!-- 2.35619 -0.685398 0 -->
+			<!-- -1.309 -1.09956 0.872665 -->
+
+
+
+
+
+
+	<joint name="Base_to_LinkR1" type="revolute">
+		<parent link="base_link" />
+		<child link="LinkR1" />
+		<axis xyz=".08138 -.03421 0.046985" />
+		<origin xyz=".047607 -.07 .411486"/>
+		<limit effort="1000.0" lower="-2.941" upper="2.941" velocity="-1" />
+	</joint>
+
+	<link name="LinkR1">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link1.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.047607 .07 -.411486" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR1_to_LinkR2" type="revolute">
+		<parent link="LinkR1" />
+		<child link="LinkR2" />
+		<axis xyz=".0106485 -.070704 -.069911" />
+		<origin xyz=".073592 -.076901 .045355"/>
+		<limit effort="1000.0" lower="-2.505" upper=".759" velocity="1" />
+	</joint>
+
+	<link name="LinkR2">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link2.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.121199 .146909 -.456841" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR2_to_LinkR3" type="revolute">
+		<parent link="LinkR2" />
+		<child link="LinkR3" />
+		<axis xyz=".08138 -.034202 .046984" />
+		<origin xyz=".144343 -.014692 .08047"/>
+		<limit effort="1000.0" lower="-2.941" upper="2.941" velocity="1" />
+	</joint>
+
+	<link name="LinkR3">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link3.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.265542 .161601 -.537311" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR3_to_LinkR4" type="revolute">
+		<parent link="LinkR3" />
+		<child link="LinkR4" />
+		<axis xyz=".010648 -.070704 -.069911" />
+		<origin xyz=".1007 -.028322 -.00093"/>
+		<limit effort="1000.0" lower="-2.1554816" upper="1.39626" velocity="1" />
+	</joint>
+
+	<link name="LinkR4">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link4.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.366242 .189926 -.536381" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR4_to_LinkR5" type="revolute">
+		<parent link="LinkR4" />
+		<child link="LinkR5" />
+		<axis xyz=".05713 .061897 -.053896" />
+		<origin xyz=".10937 .094756 -.03426"/>
+		<limit effort="1000.0" lower="-5.06145" upper="5.06145" velocity="1" />
+	</joint>
+
+	<link name="LinkR5">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link5.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.475612 .09517 -.502121" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR5_to_LinkR6" type="revolute">
+		<parent link="LinkR5" />
+		<child link="LinkR6" />
+		<axis xyz=".010648 -.070704 -.069911" />
+		<origin xyz=".048094 .097317 -.069921"/>
+		<limit effort="1000.0" lower="-1.53589" upper="2.40855" velocity="1" />
+	</joint>
+
+	<link name="LinkR6">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link6.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.523706 -.002147 -.432196" rpy="0 0 0"/>
+		</visual>
+	</link>
+
+	<joint name="LinkR6_to_LinkR7" type="revolute">
+		<parent link="LinkR6" />
+		<child link="LinkR7" />
+		<axis xyz=".05713 .061897 -.053896" />
+		<origin xyz=".044116 .002585 -.017064"/>
+		<limit effort="1000.0" lower="-5.06145" upper="5.06145" velocity="1" />
+	</joint>
+
+	<link name="LinkR7">
+		<visual>
+			<geometry>
+				<mesh filename="package://yumi_driver/config/meshes/right/Link7.STL" scale = "1 1 1"/>
+			</geometry>
+			<origin xyz="-.567822 -.004732 -.415132" rpy="0 0 0"/>
+		</visual>
+	</link>
+</robot>

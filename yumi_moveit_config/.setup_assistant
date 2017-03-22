@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: yumi_description
+    relative_path: urdf/yumi.urdf
+  SRDF:
+    relative_path: config/yumi.srdf
+  CONFIG:
+    author_name: Chris Correa
+    author_email: chris.correa@berkeley.edu
+    generated_timestamp: 1488067684

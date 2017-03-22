@@ -1,0 +1,17 @@
+<launch>
+    <arg name="paused" default="false"/>
+    <arg name="gui" default="true"/>
+    <arg name="hardware_interface" default="EffortJointInterface"/>
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" default="worlds/empty.world"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="gui" value="$(arg gui)"/>
+    </include>
+
+    <param name="rook_description" command="$(find xacro)/xacro.py $(find yumi_driver)/src/rook.urdf" />
+<!--     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -param rook_description -z 0.01 -model rook" respawn="false" output="screen" />
+ -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find yumi_driver)/src/rook.urdf -urdf -z 0 -model my_rook" />
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find yumi_driver)/src/box.urdf -urdf -z 1 -model simple_box" /> -->
+</launch>

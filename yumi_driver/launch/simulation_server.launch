@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="robot_description" textfile="$(find yumi_description)/urdf/yumi.urdf" />
+
+  <node name="YuMiSimulationServer" pkg="yumi_driver" type="YuMiSimulationServer.py" output="screen">
+    <param name="urdf_param" value="/robot_description"/>
+  </node>
+
+</launch>

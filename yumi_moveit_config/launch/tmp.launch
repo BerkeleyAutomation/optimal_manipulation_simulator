@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /joint_states sensor_msgs/JointState '{name: ['yumi_joint_1_l', 'yumi_joint_2_l', 'yumi_joint_7_l', 'yumi_joint_3_l', 'yumi_joint_4_l', 'yumi_joint_5_l', 'yumi_joint_6_l', 'gripper_l_joint', 'yumi_joint_1_r', 'yumi_joint_2_r', 'yumi_joint_7_r', 'yumi_joint_3_r', 'yumi_joint_4_r', 'yumi_joint_5_r', 'yumi_joint_6_r', 'gripper_r_joint'], position: [0,-130,135,30,0,40,0,7,0,0,-130,-135,30,0,40,0,7,0]}'"/>
+</launch>
