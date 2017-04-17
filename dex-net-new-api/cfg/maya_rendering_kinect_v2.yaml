@@ -1,0 +1,83 @@
+# Core parameters ####################################################
+root_dir:     /Users/jeff/Documents/Research/dex-net/GPIS
+cache_dir:    /Users/jeff/Documents/Research/dex-net/GPIS/data
+
+dataset_counts: data/counts.txt
+datasets:
+  dexnet_physical_experiments:
+    start_index: 0
+    end_index: 9000
+
+max_chunk_size: 1
+
+#database_dir: &id_database_dir /Volumes/share/shape_data/MASTER_DB_v3
+database_dir: &id_database_dir /Users/jeff/Documents/Research/dex-net/data/db
+database_cache_dir: *id_database_dir
+database_name: yumi_test_render_db.hdf5
+results_database_name: results.hdf5
+
+num_trials: 0
+sleep_time: 10
+
+priors_dataset: keys_10000_train_and_val
+priors_feature_names:
+  - nearest_features_1000_train_and_val
+
+# Window weights #####################################################
+inf:   &id_inf       100000000000000000000.0
+zero:  &id_zero      0.0
+weight_proj_win:     0.0
+weight_grad_x:       gaussian_500.0_1.75
+weight_grad_y:       gaussian_500.0_1.75
+weight_curvature:    0.0
+weight_grasp_center: 0.0
+weight_grasp_axis:   0.0
+weight_grasp_angle:  0.0
+weight_gravity:      200.0
+
+# Kernel params
+kernel_sigma: 1.0
+kernel_l: 1.0
+kernel_tolerance: 0.001
+
+prior_neighbor_weight: 0.001
+prior_neighbor_distance: 20
+prior_num_neighbors: 0
+prior_kernel_tolerance: 0.001
+
+lb_alpha: 0.50
+
+# Maya params
+maya:
+  path_to_mayapy: '/Applications/Autodesk/maya2015/Maya.app/Contents/bin/mayapy'
+
+  dest_dir: '/Users/jeff/Documents/Research/dex-net/data/rendered_sets/yumi_test'
+  save_images: 1
+
+  render_mode: 'depth' # or depth
+  back_color:
+    r: 0.0
+    g: 0.0
+    b: 0.0
+  num_radial: 4
+  num_lat: 4
+  num_long: 8
+  use_table: 0
+  hemisphere: 1
+  normalize: 1
+
+  min_dist: 0.45
+  max_dist: 0.75
+  min_range: 0.0
+  max_range: 1.5
+  min_prob: 0.01
+  file_type: '.jpg'
+
+  focal_length: 3.65
+  app_horiz: 0.201
+  app_vert: 0.167
+  image_width: 512
+  image_height: 424
+  image_format: 8
+  output_image_width: 256
+  output_image_height: 256

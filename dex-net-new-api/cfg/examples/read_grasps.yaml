@@ -1,0 +1,18 @@
+# DB generation params
+# database_dir: &id_database_dir /mnt/terastation/shape_data/downloads/
+database_dir: &id_database_dir /home/cloudminds/chomp_ws/src/dex-net-new-api/
+database_cache_dir: *id_database_dir
+# database_name: physical_experiment_db.hdf5
+database_name: test.hdf5
+
+# dataset: dexnet_physical_experiments
+dataset: chess
+
+# Object params
+# object_name: bar_clamp
+object_name: WizRook
+stable_pose_id: pose_2
+
+# Grasp params
+# gripper_name: baxter
+gripper_name: yumi

@@ -1,0 +1,14 @@
+# DB generation params
+database_dir: &id_database_dir data/db/ 
+    # /mnt/terastation/shape_data/downloads/
+database_cache_dir: *id_database_dir
+database_name: chess_db.hdf5
+
+dataset: chess
+
+# Object params
+object_name: WizRook
+stable_pose_id: pose_1
+
+# Grasp params
+gripper_name: cloud_mind

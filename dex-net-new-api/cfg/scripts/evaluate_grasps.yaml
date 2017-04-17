@@ -1,0 +1,79 @@
+# Core database parameters
+dataset_counts: data/counts.txt
+datasets:
+  dexnet_physical_experiments:
+    start_index: 0
+    end_index: 9000
+
+database_dir: &id_database_dir data/db
+database_cache_dir: *id_database_dir
+database_name: yumi_grasp_db.hdf5
+
+object_key: gearbox
+stp_id: pose_5
+gripper: yumi
+
+debug: 0
+
+# experiment config
+num_grasp_trials: 3
+grasp_candidate_dir: data/grasp_candidates
+
+# sensor config
+calib_dir: /home/autolab/Public/alan/calib
+num_images: 10
+sensor:
+  device_num: 0
+  frame: kinect2_right_shoulder
+
+# yumi control
+control:
+  approach_angle_thresh: 0.125 # in radians
+  grasp_height_thresh: 0.03
+  approach_dist: 0.125
+  lift_height: 0.2
+  velocity: 300
+
+# registration params
+registration:
+  workspace_min_pt:
+    - 0.13
+    - -0.5
+    - 0.01
+  workspace_max_pt:
+    - 0.5
+    - 0.5
+    - 0.25
+
+  depth_im_median_filter_dim: 3
+  depth_im_erosion_filter_dim: 3
+  depth_im_grad_thresh: 0.02
+  depth_im_rescale_factor: 1.0
+
+  index_im_dim: 256
+  area_thresh: 200
+  cache_im_filename: data/caffe/cnn_grayscale_im.jpg
+
+  num_nearest_neighbors: 3
+
+  icp_sample_size: 500
+  icp_relative_point_plane_cost: 100
+  icp_regularization_lambda: 0.01
+  feature_matcher_dist_thresh: 0.025
+  feature_matcher_norm_thresh: 0.75
+  num_registration_iters: 5
+  compute_total_registration_cost: 1
+  threshold_cost: 0.029
+
+caffe:
+  config_dir: data/caffe
+  caffe_model: caffenet.caffemodel
+  caffe_finetuning_model: alexnet.caffemodel
+  deploy_file: deploy_conv5.prototxt
+  mean_file: mean.npy
+  deploy_mode: gpu
+  raw_scale: 255
+  image_dim_x: 256
+  image_dim_y: 256
+  use_stable_poses: 1
+  image_type: segmask

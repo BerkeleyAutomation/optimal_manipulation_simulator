@@ -1,0 +1,53 @@
+# Core database parameters
+dataset_counts: data/counts.txt
+datasets:
+  dexnet_physical_experiments:
+    start_index: 0
+    end_index: 9000
+
+database_dir: &id_database_dir data/db
+database_cache_dir: *id_database_dir
+database_name: yumi_render_db.hdf5
+
+object_key: gearbox
+stp_id: pose_5
+
+vis_point_cloud: 0
+
+# sensor config
+calib_dir: data/calib
+num_images: 10
+sensor:
+  device_num: 0
+  frame: kinect2_right_shoulder
+
+workspace:
+  min_pt:
+    - -0.1
+    - -0.5
+    - 0.01
+  max_pt:
+    - 0.5
+    - 0.5
+    - 0.25
+
+# registration params
+registration:
+  depth_im_median_filter_dim: 3
+  depth_im_erosion_filter_dim: 3
+  index_im_dim: 256
+  area_thresh: 200
+  cache_im_filename: data/caffe/cnn_grayscale_im.jpg
+
+caffe:
+  config_dir: data/caffe
+  caffe_model: caffenet.caffemodel
+  caffe_finetuning_model: alexnet.caffemodel
+  deploy_file: deploy_conv5.prototxt
+  mean_file: mean.npy
+  deploy_mode: gpu
+  raw_scale: 255
+  image_dim_x: 256
+  image_dim_y: 256
+  use_stable_poses: 1
+  image_type: segmask

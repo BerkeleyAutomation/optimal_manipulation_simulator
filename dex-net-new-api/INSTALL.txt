@@ -1,0 +1,25 @@
+# INSTALLATION INSTRUCTIONS FOR LINUX AND MAC OSX
+
+1. Install remote dependencies
+a) MAC OSX
+pip install --user --ignore-installed -r requirements.txt
+
+b) Linux
+sudo apt-get install libhdf5-dev
+sudo pip install -r requirements.txt
+
+2. Install co-packaged dependencies
+cd deps/tfx
+sudo python setup.py install
+
+3. Pull Dex-Net database
+cd {PATH_TO_YOUR_DEXNET}
+mkdir data/db
+scp jmahler@rll4.cs.berkeley.edu:/mnt/terastation/shape_data/downloads/physical_experiment_db.hdf5 data/db
+pwd: graspdvrk
+
+4. Check installation
+You can check the installation by running
+python examples/read_grasps.py
+
+You should see a bunch of translations and quaternions being output
