@@ -1,0 +1,120 @@
+
+New Test
+
+Run 0
+Initial run 
+Terminated after 41 iterations, using path from iteration 38
+Optimization actually took 1.290884 sec to run
+With initial condition 
+Terminated after 21 iterations, using path from iteration 18
+Optimization actually took 0.632956 sec to run
+Without initial condition 
+Terminated after 200 iterations, using path from iteration 72
+Optimization actually took 5.988755 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 65
+Optimization actually took 5.753717 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration -1
+Optimization actually took 6.074184 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 191 iterations, using path from iteration 188
+Optimization actually took 5.284657 sec to run
+
+Run 1
+Initial run 
+Terminated after 181 iterations, using path from iteration 176
+Optimization actually took 4.851386 sec to run
+With initial condition 
+Terminated after 21 iterations, using path from iteration 20
+Optimization actually took 0.602438 sec to run
+Without initial condition 
+Terminated after 21 iterations, using path from iteration 20
+Optimization actually took 0.617848 sec to run
+
+Run 2
+Initial run 
+Terminated after 200 iterations, using path from iteration 196
+Optimization actually took 5.352848 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 31 iterations, using path from iteration 29
+Optimization actually took 0.881283 sec to run
+With initial condition 
+Terminated after 11 iterations, using path from iteration 4
+Optimization actually took 0.361210 sec to run
+Without initial condition 
+Terminated after 31 iterations, using path from iteration 28
+Optimization actually took 0.897523 sec to run
+
+Run 3
+Initial run 
+Terminated after 200 iterations, using path from iteration 141
+Optimization actually took 5.700891 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 61 iterations, using path from iteration 56
+Optimization actually took 1.693277 sec to run
+With initial condition 
+Terminated after 41 iterations, using path from iteration 37
+Optimization actually took 1.207443 sec to run
+Without initial condition 
+Terminated after 200 iterations, using path from iteration -1
+Optimization actually took 5.431013 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration -1
+Optimization actually took 5.537141 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 41 iterations, using path from iteration 37
+Optimization actually took 1.123925 sec to run
+
+Run 4
+Initial run 
+Terminated after 200 iterations, using path from iteration 149
+Optimization actually took 5.295234 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 60
+Optimization actually took 5.499721 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 118
+Optimization actually took 5.444305 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 51 iterations, using path from iteration 41
+Optimization actually took 1.398632 sec to run
+With initial condition 
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 15
+Optimization actually took 5.888678 sec to run
+Terminated after 200 iterations, using path from iteration 4
+Optimization actually took 5.336363 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 4
+Optimization actually took 5.380287 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 11
+Optimization actually took 5.519856 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 12
+Optimization actually took 5.494498 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 7
+Optimization actually took 5.444695 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 16
+Optimization actually took 5.408068 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 4
+Optimization actually took 5.379059 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 5
+Optimization actually took 5.396355 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 11 iterations, using path from iteration 2
+Optimization actually took 0.362945 sec to run
+Without initial condition 
+Terminated after 200 iterations, using path from iteration 115
+Optimization actually took 5.691812 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 200 iterations, using path from iteration 63
+Optimization actually took 5.400054 sec to run
+Fail: ABORTED: Motion plan was found but it seems to be invalid (possibly due to postprocessing). Not executing.
+Terminated after 41 iterations, using path from iteration 33
+Optimization actually took 1.176714 sec to run

@@ -1,0 +1,10 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: moveit_resources
+    relative_path: test_robot_description/urdf/test_robot.urdf
+  SRDF:
+    relative_path: config/fanuc.srdf
+  CONFIG:
+    author_name: Chris Correa
+    author_email: chris.correa@berkeley.edu
+    generated_timestamp: 1493661660

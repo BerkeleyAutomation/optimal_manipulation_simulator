@@ -1,0 +1,4 @@
+controller_list:
+  - name: fake_group_controller
+    joints:
+      - joint_2

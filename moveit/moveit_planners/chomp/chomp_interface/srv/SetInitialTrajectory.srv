@@ -1,0 +1,3 @@
+trajectory_msgs/JointTrajectory initial_trajectory
+---
+int8 success
