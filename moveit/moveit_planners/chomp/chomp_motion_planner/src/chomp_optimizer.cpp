@@ -43,10 +43,6 @@
 #include <moveit/planning_scene/planning_scene.h>
 #include <eigen3/Eigen/LU>
 #include <eigen3/Eigen/Core>
-#include <iostream>
-#include <fstream>
-
-
 
 namespace chomp
 {
@@ -332,15 +328,6 @@ void ChompOptimizer::registerParents(const moveit::core::JointModel* model)
   }
 }
 
-bool writeText(std::string Filename, std::vector<double> variable){
-  std::ofstream myfile;
-  myfile.open(Filename);
-  for (int i = 0; i < variable.size(); i++)
-    myfile << variable[i] << "\n";
-  myfile.close();
-  return 1;
-}
-
 void ChompOptimizer::optimize()
 {
   ros::WallTime start_time = ros::WallTime::now();
@@ -352,7 +339,6 @@ void ChompOptimizer::optimize()
   bool should_break_out = false;
 
   // iterate
-  std::vector<double> sCosts, cCosts, tcosts;
   for (iteration_ = 0; iteration_ < parameters_->getMaxIterations(); iteration_++)
   {
     // if (iteration_ % 10 == 0)
@@ -368,11 +354,7 @@ void ChompOptimizer::optimize()
     double sCost = getSmoothnessCost();
     double cost = cCost + sCost;
 
-    // ROS_INFO_STREAM("Iteration: " << iteration_ << "Collision cost: " << cCost << " smoothness cost: " << sCost);
-
-    sCosts.push_back(sCost);
-    cCosts.push_back(cCost);
-    tcosts.push_back(cost);
+    // ROS_INFO_STREAM("Collision cost " << cCost << " smoothness cost " << sCost);
 
     // if(parameters_->getAddRandomness() && currentCostIter != -1)
     // {
@@ -398,7 +380,7 @@ void ChompOptimizer::optimize()
     else
     {
       // we changed this
-      // if (cost < best_group_trajectory_cost_)
+      // if (cost < best_group_trajectory_cost_ && isCurrentTrajectoryMeshToMeshCollisionFree())
       // if (iteration_ == 150)
       if (cost < best_group_trajectory_cost_)
       {
@@ -537,12 +519,11 @@ void ChompOptimizer::optimize()
     //   animateEndeffector();
     // }
 
-
-    // if(parameters_->getAnimatePath() && iteration_ % 20 == 0)
-    // {
-    //   std::cout << "Cost at iteration " << iteration_ << " is " << sCost << " " << cCost << std::endl;
-    //   animatePath();
-    // }
+    if(parameters_->getAnimatePath() && iteration_ % 25 == 0)
+    {
+      std::cout << "Cost at iteration " << iteration_ << " is " << sCost << " " << cCost << std::endl;
+      animatePath();
+    }
 
     if (should_break_out)
     {
@@ -562,7 +543,7 @@ void ChompOptimizer::optimize()
       }
     }
   }
-  animatePath();
+  // animatePath();
   
   if (is_collision_free_)
   {
@@ -587,13 +568,6 @@ void ChompOptimizer::optimize()
   ROS_INFO("Terminated after %d iterations, using path from iteration %d", iteration_, last_improvement_iteration_);
   ROS_INFO("Optimization core finished in %f sec", (ros::WallTime::now() - start_time).toSec());
   ROS_INFO_STREAM("Time per iteration " << (ros::WallTime::now() - start_time).toSec() / (iteration_ * 1.0));
-
-  std::string Filename = "~/Downloads/Smoothness_Costs.txt";
-  writeText(Filename, sCosts);
-  Filename = "~/Downloads/Collision_Costs.txt";
-  writeText(Filename, cCosts);
-  Filename = "~/Downloads/Total_Costs.txt";
-  writeText(Filename, tcosts);
 }
 
 bool ChompOptimizer::isCurrentTrajectoryMeshToMeshCollisionFree() const

@@ -36,7 +36,7 @@
 
 #include <chomp_interface/chomp_interface.h>
 #include <chomp_motion_planner/chomp_trajectory.h>
-#include <moveit_msgs/GetMotionPlan.h>
+#include <chomp_msgs/SetInitialTrajectory.h>
 
 namespace chomp_interface
 {
@@ -50,15 +50,15 @@ CHOMPInterface::CHOMPInterface(const std::string& group) : ChompPlanner(), group
 void CHOMPInterface::loadParams()
 {
   nh_.param("planning_time_limit", params_.planning_time_limit_, 10.0);
-  nh_.param("max_iterations", params_.max_iterations_, 300);
+  nh_.param("max_iterations", params_.max_iterations_, 200);
   nh_.param("max_iterations_after_collision_free", params_.max_iterations_after_collision_free_, 5);
   nh_.param("smoothness_cost_weight", params_.smoothness_cost_weight_, 0.1);
   // nh_.param("obstacle_cost_weight", params_.obstacle_cost_weight_, 100.0);
   nh_.param("obstacle_cost_weight", params_.obstacle_cost_weight_, 1.0);
   // nh_.param("learning_rate", params_.learning_rate_, 0.1);
   // nh_.param("learning_rate", params_.learning_rate_, 0.01);
-  nh_.param("learning_rate", params_.learning_rate_, .01);
-  nh_.param("animate_path", params_.animate_path_, true);
+  nh_.param("learning_rate", params_.learning_rate_, .1);
+  nh_.param("animate_path", params_.animate_path_, false);
   nh_.param("add_randomness", params_.add_randomness_, false);
   nh_.param("smoothness_cost_velocity", params_.smoothness_cost_velocity_, 0.0);
   nh_.param("smoothness_cost_acceleration", params_.smoothness_cost_acceleration_, 1.0);
@@ -82,10 +82,12 @@ void CHOMPInterface::loadParams()
   // filter_mode_ = false;
 }
 
-bool CHOMPInterface::setInitialTrajectory(moveit_msgs::ExecuteKnownTrajectory::Request &request, moveit_msgs::ExecuteKnownTrajectory::Response &response) {
-  if (request.trajectory.joint_trajectory.points.size() > 0) {
-    initial_trajectory_ = request.trajectory.joint_trajectory;
+bool CHOMPInterface::setInitialTrajectory(chomp_msgs::SetInitialTrajectory::Request &request, chomp_msgs::SetInitialTrajectory::Response &response) {
+  if (request.initial_trajectory.points.size() > 0) {
+    initial_trajectory_ = request.initial_trajectory;
     initial_trajectory_valid_ = true;
+    initial_trajectory_start_index_ = request.start_index;
+    initial_trajectory_end_index_ = request.end_index;
   } else {
     initial_trajectory_valid_ = false;
   }
@@ -97,6 +99,7 @@ void CHOMPInterface::getInitialTrajectory(const planning_scene::PlanningSceneCon
   if (initial_trajectory_valid_) {
     ROS_INFO_STREAM("Initializing with provided initial trajectory.");
     trajectory = chomp::ChompTrajectory(planning_scene->getRobotModel(), req.group_name, initial_trajectory_);
+    // trajectory.setStartEndIndex(initial_trajectory_start_index_, initial_trajectory_end_index_);
   } else {
     ROS_INFO_STREAM("Initializing with min jerk trajectory.");
     // fill in an initial quintic spline trajectory

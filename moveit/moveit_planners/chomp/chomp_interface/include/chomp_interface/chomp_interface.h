@@ -40,7 +40,9 @@
 #include <chomp_motion_planner/chomp_planner.h>
 #include <chomp_motion_planner/chomp_parameters.h>
 #include <ros/ros.h>
-#include <moveit_msgs/ExecuteKnownTrajectory.h>
+// #include <moveit_msgs/ExecuteKnownTrajectory.h>
+#include <chomp_msgs/SetInitialTrajectory.h>
+
 
 namespace chomp_interface
 {
@@ -69,9 +71,11 @@ protected:
   ros::ServiceServer initial_trajectory_server_;
 
   trajectory_msgs::JointTrajectory initial_trajectory_;
+  int initial_trajectory_start_index_;
+  int initial_trajectory_end_index_;
   bool initial_trajectory_valid_ = false;
 
-  bool setInitialTrajectory(moveit_msgs::ExecuteKnownTrajectory::Request &request, moveit_msgs::ExecuteKnownTrajectory::Response &response);
+  bool setInitialTrajectory(chomp_msgs::SetInitialTrajectory::Request &request, chomp_msgs::SetInitialTrajectory::Response &response);
 
   virtual void getInitialTrajectory(const planning_scene::PlanningSceneConstPtr& planning_scene,
                                     const moveit_msgs::MotionPlanRequest& req, chomp::ChompTrajectory& trajectory) const;

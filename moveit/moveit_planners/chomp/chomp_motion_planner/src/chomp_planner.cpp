@@ -107,12 +107,6 @@ bool ChompPlanner::solve(const planning_scene::PlanningSceneConstPtr& planning_s
   start_state.update();
 
   ros::WallTime create_time = ros::WallTime::now();
-  collision_detection::CollisionRequest req1 = collision_detection::CollisionRequest(); 
-  collision_detection::CollisionResult res1 = collision_detection::CollisionResult();
-  planning_scene->checkCollision(req1, res1);
-  std::cout << "RESPONSE" << res1.collision << std::endl;
-
-
   ChompOptimizer optimizer(&trajectory, planning_scene, req.group_name, &params, start_state);
   if (!optimizer.isInitialized())
   {

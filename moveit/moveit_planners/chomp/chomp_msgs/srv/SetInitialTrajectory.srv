@@ -1,0 +1,5 @@
+trajectory_msgs/JointTrajectory initial_trajectory
+int32 start_index
+int32 end_index
+---
+int8 success

@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   chomp_motion_planner
   moveit_experimental
   message_generation
+  chomp_msgs
 )
 
 find_package(Eigen 3 REQUIRED)
