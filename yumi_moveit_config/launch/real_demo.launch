@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
 
   <!-- By default, we do not start a database (it can be large) -->
@@ -39,8 +40,6 @@
   </include>
 
 
-
-
   <!-- Gazebo -->
 <!--   <arg name="paused" default="false"/>
   <arg name="gui" default="true"/>
@@ -60,5 +59,15 @@
   <include file="$(find yumi_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
   </include>
+
+  <!-- Start a joint state publisher -->
+  <!-- We do not have a robot connected, so publish fake joint states -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="/use_gui" value="false"/>
+    <rosparam param="/source_list">[/move_group/fake_controller_joint_states]</rosparam>
+  </node>
+
+  <!--
   <node pkg="rostopic" type="rostopic" name="rostopic" args="pub /joint_states sensor_msgs/JointState '{name: ['yumi_joint_1_l', 'yumi_joint_2_l', 'yumi_joint_7_l', 'yumi_joint_3_l', 'yumi_joint_4_l', 'yumi_joint_5_l', 'yumi_joint_6_l', 'gripper_l_joint', 'yumi_joint_1_r', 'yumi_joint_2_r', 'yumi_joint_7_r', 'yumi_joint_3_r', 'yumi_joint_4_r', 'yumi_joint_5_r', 'yumi_joint_6_r', 'gripper_r_joint'], position: [0.0,-2.2689280275926285, 2.356194490192345,0.5235987755982988,0.0,0.6981317007977318,0.0,0.0,0.0,-2.2689280275926285,-2.356194490192345,0.5235987755982988,0.0,0.6981317007977318,0.0,0.0]}'"/>
+  -->
 </launch>

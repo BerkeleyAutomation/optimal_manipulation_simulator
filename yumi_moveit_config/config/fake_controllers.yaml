@@ -1,7 +1,7 @@
 controller_list:
   - name: yumi_left_controller
     action_ns: follow_left_joint_trajectory
-    type: FollowJointTrajectory
+    type: interpolate
     joints:
       - yumi_joint_1_l
       - yumi_joint_2_l
@@ -13,7 +13,7 @@ controller_list:
       - gripper_l_joint
   - name: yumi_right_controller
     action_ns: follow_right_joint_trajectory
-    type: FollowJointTrajectory
+    type: interpolate
     joints:
       - yumi_joint_1_r
       - yumi_joint_2_r
@@ -29,3 +29,8 @@ controller_list:
   # - name: fake_right_gripper_controller
   #   joints:
   #     - gripper_r_joint
+initial:
+  - group: left_arm
+    pose: left_bin_home_pose
+  - group: right_arm
+    pose: right_bin_home_pose    

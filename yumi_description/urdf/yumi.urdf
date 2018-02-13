@@ -764,6 +764,14 @@
   </joint>
   <link name="right_dummy_point">
   </link>
+  <!--right gripper-->
+  <joint name="right_suction_joint" type="fixed">
+    <origin rpy="0 0 3.14159265359" xyz="-0.001 0 0.103"/>
+    <parent link="yumi_link_7_r"/>
+    <child link="right_suction_point"/>
+  </joint>
+  <link name="right_suction_point">
+  </link>
   <!--joint between {parent} and base-->
   <joint name="yumi_link_7_r_joint" type="fixed">
     <origin rpy="0 0 3.14159265359" xyz="0 0 0.007"/>
@@ -919,6 +927,14 @@
     <child link="left_dummy_point"/>
   </joint>
   <link name="left_dummy_point">
+  </link>
+  <!--right gripper-->
+  <joint name="left_gripper_joint" type="fixed">
+    <origin rpy="0 0 3.14159265359" xyz="0 0 0.156"/>
+    <parent link="yumi_link_7_l"/>
+    <child link="left_gripper_point"/>
+  </joint>
+  <link name="left_gripper_point">
   </link>
   <!--joint between {parent} and base-->
   <joint name="yumi_link_7_l_joint" type="fixed">
