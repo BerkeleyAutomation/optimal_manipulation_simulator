@@ -29,22 +29,22 @@
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="left_bin_home_pose" group="left_arm">
-        <joint name="yumi_joint_1_l" value="-0.4" />
+        <joint name="yumi_joint_1_l" value="-0.50" />
         <joint name="yumi_joint_2_l" value="-1.33" />
-        <joint name="yumi_joint_3_l" value="0.31" />
-        <joint name="yumi_joint_4_l" value="1.26" />
-        <joint name="yumi_joint_5_l" value="1.45" />
-        <joint name="yumi_joint_6_l" value="0.025" />
-        <joint name="yumi_joint_7_l" value="0.48" />
+        <joint name="yumi_joint_3_l" value="0.029" />
+        <joint name="yumi_joint_4_l" value="1.34" />
+        <joint name="yumi_joint_5_l" value="1.82" />
+        <joint name="yumi_joint_6_l" value="0.17" />
+        <joint name="yumi_joint_7_l" value="0.2" />
     </group_state>
     <group_state name="right_bin_home_pose" group="right_arm">
-        <joint name="yumi_joint_1_r" value="0.4" />
-        <joint name="yumi_joint_2_r" value="-1.33" />
-        <joint name="yumi_joint_3_r" value="0.31" />
-        <joint name="yumi_joint_4_r" value="-1.26" />
-        <joint name="yumi_joint_5_r" value="1.44" />
-        <joint name="yumi_joint_6_r" value="-0.025" />
-        <joint name="yumi_joint_7_r" value="-0.48" />
+        <joint name="yumi_joint_1_r" value="0.57" />
+        <joint name="yumi_joint_2_r" value="-1.34" />
+        <joint name="yumi_joint_3_r" value="0.02" />
+        <joint name="yumi_joint_4_r" value="-1.39" />
+        <joint name="yumi_joint_5_r" value="1.88" />
+        <joint name="yumi_joint_6_r" value="-0.17" />
+        <joint name="yumi_joint_7_r" value="-0.16" />
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="left_eef" parent_link="left_dummy_point" group="left_gripper" />
