@@ -930,7 +930,7 @@
   </link>
   <!--right gripper-->
   <joint name="left_gripper_joint" type="fixed">
-    <origin rpy="0 0 3.14159265359" xyz="0 0 0.188"/>
+    <origin rpy="0 0 3.14159265359" xyz="0 0 0.190"/>
     <parent link="yumi_link_7_l"/>
     <child link="left_gripper_point"/>
   </joint>
